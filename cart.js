@@ -55,7 +55,7 @@ $('.add-btn').click(function() {
 
     $.each(cartContents, function(name, details) {
         let item = $row.clone();
-        item.append($itemQuantity.clone().text(details.quantity));
+        item.append($itemQuantity.clone().text(details.quantity + "x"));
         item.append($itemName.clone().text(name));
         item.append($itemPrice.clone().text('$' + details.price.toFixed(2)));
         item.appendTo($('.items-list'));
