@@ -6,15 +6,32 @@
     margin-bottom: 30px;
 }
 
+.table-separator {
+    border: 1px solid #dedede;
+}
+
 .cart-container {
     position: fixed;
     right: 2.5vw;
 }
 
-.bold {
+.item-list-container {
+    max-height: 35vh;
+    overflow-y: scroll;
+}
+
+.cart {
+    margin-top: 20px;
+}
+
+.item-quantity, .bold {
     font-weight: bold;
 }
 
 .btn {
     cursor: pointer;
+}
+
+.costs-container {
+    margin-top: 40px;
 }
