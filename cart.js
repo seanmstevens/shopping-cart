@@ -22,23 +22,21 @@ totalCosts.total = 0;
 $('.add-btn').click(function() {
 
     // Calculate values
-
     const itemDetails = {};
     let productName = $(this).siblings('.product-name').text();
     let priceFloat = Number($(this).siblings('.product-price').text().match(/[^$](.*)/)[0]);
     if (cartContents[productName]) {
-        cartContents[productName].price += priceFloat;
         cartContents[productName].quantity += 1;
+        totalCosts.subtotal += cartContents[productName].price * cartContents[productName].quantity;
     } else {
         itemDetails.price = priceFloat;
         itemDetails.quantity = 1;
+        totalCosts.subtotal += itemDetails.price;
         cartContents[productName] = itemDetails;
     }
-    totalCosts.subtotal += priceFloat;
     totalCosts.total = (totalCosts.subtotal + (totalCosts.subtotal * totalCosts.tax));
 
     // Construct the shopping cart's HTML layout
-
     console.log(cartContents);
     $('.cart').empty().append($('<div />', {
         'class': 'item-list-container'

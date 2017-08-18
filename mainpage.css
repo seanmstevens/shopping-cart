@@ -10,15 +10,10 @@
     border: 1px solid #dedede;
 }
 
-.cart-container {
-    position: fixed;
-    right: 2.5vw;
-}
-
-.item-list-container {
+/* .item-list-container {
     max-height: 35vh;
     overflow-y: auto;
-}
+} */
 
 .cart {
     margin-top: 20px;
