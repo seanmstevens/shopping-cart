@@ -73,7 +73,7 @@ $('.add-btn').click(function() {
 
     $('#subtotal').text('$' + totalCosts.subtotal.toFixed(2));
     $('#taxRate').text(totalCosts.tax * 100 + '%');
-    $('#total').text('$' + totalCosts.total.toFixed(2));
+    $('#total, #displayTotal').text('$' + totalCosts.total.toFixed(2));
 });
 
 function updateTotals() {
@@ -84,7 +84,7 @@ function updateTotals() {
     totalCosts.total = (totalCosts.subtotal + (totalCosts.subtotal * totalCosts.tax));
     $('#subtotal').text('$' + totalCosts.subtotal.toFixed(2));
     $('#taxRate').text(totalCosts.tax * 100 + '%');
-    $('#total').text('$' + totalCosts.total.toFixed(2));
+    $('#total, #displayTotal').text('$' + totalCosts.total.toFixed(2));
 }
 
 $(document.body).on({click: function() {
@@ -97,3 +97,8 @@ $(document.body).on({click: function() {
         $('.cart').append($('<p class="text-muted text-center placeholder"><em>No items in cart.</em></p>'));
     }
 }}, '.item-delete-button');
+
+$('#confirmOrder').click(function() {
+    $('#shippingInfoModal').modal('hide');
+    $('#orderConfirmModal').modal('show');
+});

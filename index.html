@@ -23,19 +23,19 @@
             </nav>
         </div>
         <div class="container">
-            <div class="modal fade2" id="shippingInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal fade-alt" id="shippingInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="shippingInfoModalLabel">Complete Your Order</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span class="close-btn" aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="container">
-                                <form>
-                                    <div class="row mt-4">
+                            <div class="container" id="shippingModalBody">
+                                <form id="shippingForm">
+                                    <div class="row">
                                         <div class="col-sm-12 pb-3">
                                             <label for="shippingName">Full Name</label><br>
                                             <input type="text" class="form-control" id="shippingName" placeholder="Jane Q. Example">
@@ -45,7 +45,7 @@
                                             <label for="shippingStreet">Street</label>
                                             <input type="text" class="form-control" id="shippingStreet" placeholder="Street">
                                         </div>
-                                        <div class="col-sm-3 pb-3">
+                                        <div class="col-sm-2 pb-3">
                                             <label for="shippingAptNum">Apt.</label>
                                             <input type="text" class="form-control" id="shippingAptNum" placeholder="Apt. #">
                                         </div>
@@ -109,7 +109,7 @@
                                                 <option value="WY">WY</option>
                                             </select>
                                         </div>
-                                        <div class="col-sm-3 pb-3">
+                                        <div class="col-sm-2 pb-3">
                                             <label for="shippingZipCode">Zip Code</label>
                                             <input type="text" class="form-control" id="shippingZipCode" placeholder="Zip Code">
                                         </div>
@@ -118,14 +118,41 @@
                                             <label for="shippingCCNum">Credit Card Number</label>
                                             <input type="text" class="form-control" id="shippingCCNum" placeholder="XXXX-XXXX-XXXX-XXXX">
                                         </div>
-                                        <div class="col-sm-6 pb-3"
-                                            <label for="shippingCCExpiration">Exp.</label>
-                                            <div>
-                                                <input type="text" class="form-control" if="shippingCCExpirationM" placeholder="MM">
+                                        <div class="form-group row col-sm-8">
+                                            <label class="col-sm-12" for="shippingCCExpiration">Card Exp.</label>
+                                            <div class="col-sm-4 pb-3">
+                                                <select class="form-control custom-select" id="shippingCCExpMo" size="0">
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
                                             </div>
-                                            <div>
-                                                <input type="text" class="form-control" if="shippingCCExpirationY" placeholder="YYYY">
+                                            <div class="col-sm-4 pb-3">
+                                                <select class="form-control custom-select" name="shippingCCExpYr" size="0">
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                    <option>2019</option>
+                                                    <option>2020</option>
+                                                    <option>2021</option>
+                                                    <option>2022</option>
+                                                    <option>2023</option>
+                                                </select>
                                             </div>
+                                            <div class="col-sm-4 pb-3">
+                                                <input type="text" class="form-control" id="shippingCVC" placeholder="CVC">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <p class="h3 text-center">Total: <strong id="displayTotal">$0.00</strong></p>
                                         </div>
                                     </div>
                                 </form>
@@ -133,14 +160,38 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-success" id="confirmOrder">Purchase</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="modal fade-alt" id="orderConfirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="vertical-alignment-helper">
+                    <div class="vertical-align-center modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="shippingInfoModalLabel">Order Confirmed</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span class="close-btn" aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <p class="h4 text-center text-success">
+                                        <i class="fa fa-check-circle-o"></i> Your order's on its way!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>        
             <div class="row">
                 <div class="col col-sm-8">
-                    <h1>Products</h1>
+                    <h1 class="display-4">Products</h1>
                     <div class="row">
                         <div class="col col-xs-12 col-md-6 col-lg-4 product-container">
                             <div>
@@ -310,7 +361,7 @@
                     </div>
                 </div>
                 <div class="col col-sm-4 cart-container">
-                    <h2>Shopping Cart</h2>
+                    <h2 class="display-4">Shopping Cart</h2>
                     <hr class="table-separator">
                     <div class="cart">
                         <p class="text-muted text-center placeholder"><em>No items in cart.</em></p>
